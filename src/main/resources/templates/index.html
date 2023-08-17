@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .card-body {
+                display: inline-flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .card-body h4 {
+                padding: 0;
+                margin: 0;
+            }
+            .footer {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+            }
+        </style>
+        <title>Home</title>
+    </head>
+    <body>
+        <!-- Banner -->
+        <div class="container-fluid p-5 bg-secondary text-white text-center">
+            <h1>JEE EXAM</h1>
+            <p>Mise en place de système de régularisation des impôts pour les contribuables. <br> Ce système va permettre de mettre aux usagers d'effectuer les paiements de leurs impôts.</p>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card" style="width:300px">
+                        <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png" alt="Card image" style="width:100%; height: 297px">
+                        <div class="card-body">
+                            <h4 class="card-title">Déclarants</h4>
+                            <a th:href="@{/declarant/list}" class="btn btn-secondary">Voir</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card" style="width:300px">
+                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/10/06/13/57/audit-2823174_1280.png" alt="Card image" style="width:100%; height: 297px">
+                        <div class="card-body">
+                            <h4 class="card-title">Déclarations</h4>
+                            <a th:href="@{/declaration/list}" class="btn btn-warning">Voir</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card" style="width:300px">
+                        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/06/11/11/50/tax-4266792_1280.jpg" alt="Card image" style="width:100%; height: 297px">
+                        <div class="card-body">
+                            <h4 class="card-title">Paiements</h4>
+                            <a th:href="@{/paiement/list}" class="btn btn-success">Voir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 p-3 bg-secondary text-white text-center footer">
+            <p>&copy;2023 - Franchis Janel MOKOMBA</p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
