@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -29,6 +30,12 @@ public class PaiementController
     @PostMapping("/paiement/add")
     public String add(Paiement paiement) {
         paiementRepository.save(paiement);
+        return "redirect:/paiement/list";
+    }
+
+    @GetMapping("/paiement/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        paiementRepository.deleteById(id);
         return "redirect:/paiement/list";
     }
 }
