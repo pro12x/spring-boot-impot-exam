@@ -55,20 +55,26 @@
                 <div class="col-sm-4">
                     <h2 class="text-center text-primary">Formulaire d'ajout</h2><hr>
                     <form th:action="@{/declarant/add}" method="post">
+                    <!--<form th:action="@{/declarant/add}" method="post" th:object="${declarant}">
+                        <input type="hidden" th:field="*{id}">-->
                         <div class="form-group form-floating mb-3">
                             <input type="text" class="form-control" id="raison_sociale" name="raison_sociale" placeholder="Raison Sociale" required>
+                            <!--<input type="text" class="form-control" id="raison_sociale" th:field="*{raison_sociale}" placeholder="Raison Sociale" required>-->
                             <label for="raison_sociale" >Raison Sociale</label>
                         </div>
                         <div class="form-group form-floating mb-3">
                             <input type="text" class="form-control" id="address" name="address" placeholder="Adresse" required>
+                            <!--<input type="text" class="form-control" id="address" th:field="*{address}" placeholder="Adresse" required>-->
                             <label for="address">Adresse</label>
                         </div>
                         <div class="form-group form-floating mb-3">
                             <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                            <!--<input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Email" required>-->
                             <label for="email">Email</label>
                         </div>
                         <div class="form-group form-floating mb-3">
                             <input type="tel" class="form-control" id="phone" name="phone" placeholder="Téléphone" required>
+                            <!--<input type="tel" class="form-control" id="phone" th:field="*{phone}" placeholder="Téléphone" required>-->
                             <label for="phone">Téléphone</label>
                         </div>
                         <div class="form-group">
@@ -99,7 +105,7 @@
                                 <td th:text="${list.email}"></td>
                                 <td th:text="${list.phone}"></td>
                                 <td>
-                                    <a th:href="@{#}" class="btn p-1"><i class="bi bi-pencil-square text-warning"></i></a>
+                                    <!--<a th:href="@{/declarant/list/{id}(id=${list.id})}" class="btn p-1"><i class="bi bi-pencil-square text-warning"></i></a>-->
                                     <a th:href="@{/declarant/delete/{id}(id=${list.id})}" class="btn p-1"><i class="bi bi-trash text-danger"></i></a>
                                 </td>
                             </tr>

@@ -17,11 +17,13 @@ public class DeclarantController
 {
     private final DeclarantRepository declarantRepository;
 
+    // Home Page
     @GetMapping("/")
     public String getHome() {
         return "index";
     }
 
+    // Get
     @GetMapping("/declarant/list")
     public String get(Model model) {
         List<Declarant> listDeclarant = declarantRepository.findAll();
@@ -30,12 +32,26 @@ public class DeclarantController
         return "declarants";
     }
 
+    // Add
     @PostMapping("/declarant/add")
     public String add(Declarant declarant) {
         declarantRepository.save(declarant);
         return "redirect:/declarant/list";
     }
 
+    // Update
+    /*@GetMapping("/declaration/edit/{id}")
+    public String edit(@PathVariable Long id, Model model) {
+        Declarant declarant = declarantRepository.findById(id).orElse(null);
+        if (declarant != null) {
+            model.addAttribute("declarant", declarant);
+            model.addAttribute("listDeclarant", declarantRepository.findAll());
+            return "declarants";
+        }
+        return "redirect:/declarant/list";
+    }*/
+
+    // Delete
     @GetMapping("/declarant/delete/{id}")
     public String delete(@PathVariable Long id) {
         declarantRepository.deleteById(id);
