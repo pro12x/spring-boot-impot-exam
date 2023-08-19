@@ -65,7 +65,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <select name="declaration_id" class="form-select" id="floatingSelect" aria-label="Floating label select example" th:field="*{declaration.declaration_id}">
-                                <option th:each="list : ${listDeclaration}" th:value="${list.id}" th:text="${list.date}"></option>
+                                <option th:each="list : ${listDeclaration}" th:value="${list.id}" th:text="${list.declarant_id.raison_sociale + ' (' + list.date + ')'}"></option>
                             </select>
                             <label for="floatingSelect">Déclaration</label>
                         </div>
@@ -93,7 +93,7 @@
                                 <!--<th th:text="${list.id}"></th>-->
                                 <td th:text="${list.price}"></td>
                                 <td th:text="${list.date}"></td>
-                                <td th:text="${list.declaration_id.declarant_id.raison_sociale}"></td>
+                                <td th:text="${list.declaration_id.declarant_id.raison_sociale + ' (' + list.declaration_id.date + ')'}"></td>
                                 <td>
                                     <!--<a th:href="@{#}" class="btn p-1"><i class="bi bi-pencil-square text-warning"></i></a>-->
                                     <a th:href="@{/paiement/delete/{id}(id=${list.id})}" class="btn p-1"><i class="bi bi-trash text-danger"></i></a>
