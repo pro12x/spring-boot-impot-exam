@@ -2,6 +2,7 @@ package com.isi.web;
 
 import com.isi.dao.DeclarationRepository;
 import com.isi.dao.PaiementRepository;
+import com.isi.entity.Declaration;
 import com.isi.entity.Paiement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,9 @@ public class PaiementController
 
     @GetMapping("/paiement/delete/{id}")
     public String delete(@PathVariable Long id) {
+        Paiement paiement = paiementRepository.findById(id).orElse(null);
+        Declaration declaration = paiement.getDeclaration_id();
+        declaration.setPayed(false);
         paiementRepository.deleteById(id);
         return "redirect:/paiement/list";
     }
