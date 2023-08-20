@@ -63,14 +63,23 @@
                             <input type="number" class="form-control" id="price" name="price" placeholder="Montant de Déclaration" required>
                             <label for="price">Montant de Déclaration</label>
                         </div>
-                        <div class="form-floating mb-3">
+                        <!--<div class="form-floating mb-3">
                             <select name="declarant_id" class="form-select" id="floatingSelect" aria-label="Floating label select example" th:field="*{declarant.declarant_id}">
                                 <option th:each="list : ${listDeclarant}" th:value="${list.id}" th:text="${list.raison_sociale}"></option>
                             </select>
                             <label for="floatingSelect">Déclarant</label>
+                        </div>-->
+                        <div class="form-floating mb-3" th:unless="${#lists.isEmpty(listDeclarant)}">
+                            <select name="declarant_id"  class="form-select" id="floatingSelect" aria-label="Floating label select example" th:field="*{declarant.declarant_id}">
+                                <option th:each="list : ${listDeclarant}" th:value="${list.id}" th:text="${list.raison_sociale}"></option>
+                            </select>
+                            <label for="floatingSelect">Déclarant</label>
+                        </div>
+                        <div th:if="${#lists.isEmpty(listDeclarant)}">
+                            <p class="text-primary">Aucun déclarant disponible</p>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary form-control p-2 mb-3" type="submit">Ajouter</button>
+                            <button class="btn btn-primary form-control p-2 mb-3" type="submit">Déclarer</button>
                         </div>
                     </form>
                 </div>

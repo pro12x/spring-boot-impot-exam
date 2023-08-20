@@ -17,6 +17,7 @@ public class Declaration
     private Long id;
     private LocalDate date;
     private double price;
+    private boolean isPayed;
 
     @ManyToOne
     @JoinColumn(name = "declarant_id")

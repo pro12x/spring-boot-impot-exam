@@ -23,12 +23,14 @@ public class PaiementController
     public String get(Model model) {
         model.addAttribute("declaration", new Paiement());
         model.addAttribute("listPaiement", paiementRepository.findAll());
-        model.addAttribute("listDeclaration", declarationRepository.findAll());
+        model.addAttribute("listDeclaration", declarationRepository.listNotPayed());
+        //model.addAttribute("listDeclaration", declarationRepository.findAll());
         return "paiements";
     }
 
     @PostMapping("/paiement/add")
     public String add(Paiement paiement) {
+        paiement.getDeclaration_id().setPayed(true);
         paiementRepository.save(paiement);
         return "redirect:/paiement/list";
     }

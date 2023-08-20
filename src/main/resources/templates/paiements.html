@@ -63,14 +63,24 @@
                             <input type="number" class="form-control" id="price" name="price" placeholder="Montant de Paiement" required>
                             <label for="price">Montant de Paiement</label>
                         </div>
-                        <div class="form-floating mb-3">
+                        <!--<div class="form-floating mb-3">
+                            <select name="declaration_id" class="form-select" id="floatingSelect" aria-label="Floating label select example" th:field="*{declaration.declaration_id}">
+                                <option th:unless="${listDeclaration.isEmpty()}" value="">Aucune déclaration à payer</option>
+                                <option th:each="list : ${listDeclaration}" th:value="${list.id}" th:text="${list.declarant_id.raison_sociale + ' (' + list.date + ')'}"></option>
+                            </select>
+                            <label for="floatingSelect">Déclaration</label>
+                        </div>-->
+                        <div class="form-floating mb-3" th:unless="${#lists.isEmpty(listDeclaration)}">
                             <select name="declaration_id" class="form-select" id="floatingSelect" aria-label="Floating label select example" th:field="*{declaration.declaration_id}">
                                 <option th:each="list : ${listDeclaration}" th:value="${list.id}" th:text="${list.declarant_id.raison_sociale + ' (' + list.date + ')'}"></option>
                             </select>
                             <label for="floatingSelect">Déclaration</label>
                         </div>
+                        <div th:if="${#lists.isEmpty(listDeclaration)}">
+                            <p class="text-primary">Aucune déclaration disponible</p>
+                        </div>
                         <div class="form-group">
-                            <button class="btn btn-primary form-control p-2 mb-3" type="submit">Ajouter</button>
+                            <button class="btn btn-primary form-control p-2 mb-3" type="submit">Payer</button>
                         </div>
                     </form>
                 </div>
