@@ -24,23 +24,23 @@ public class PaiementController
     public String get(Model model) {
         model.addAttribute("declaration", new Paiement());
         model.addAttribute("listPaiement", paiementRepository.findAll());
-        model.addAttribute("listDeclaration", declarationRepository.listNotPayed());
-        //model.addAttribute("listDeclaration", declarationRepository.findAll());
+        // model.addAttribute("listDeclaration", declarationRepository.listNotPayed());
+        model.addAttribute("listDeclaration", declarationRepository.findAll());
         return "paiements";
     }
 
     @PostMapping("/paiement/add")
     public String add(Paiement paiement) {
-        paiement.getDeclaration_id().setPayed(true);
+        // paiement.getDeclaration_id().setPayed(true);
         paiementRepository.save(paiement);
         return "redirect:/paiement/list";
     }
 
     @GetMapping("/paiement/delete/{id}")
     public String delete(@PathVariable Long id) {
-        Paiement paiement = paiementRepository.findById(id).orElse(null);
+        /* Paiement paiement = paiementRepository.findById(id).orElse(null);
         Declaration declaration = paiement.getDeclaration_id();
-        declaration.setPayed(false);
+        declaration.setPayed(false); */
         paiementRepository.deleteById(id);
         return "redirect:/paiement/list";
     }
